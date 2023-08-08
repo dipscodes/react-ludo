@@ -1,8 +1,8 @@
 import "./App.css";
 import BrowserWindow from "./Components/BroweserWindow";
 
-function App() {
-  return <BrowserWindow />;
+const App = () => {
+  return (<BrowserWindow />);
 }
 
 export default App;
