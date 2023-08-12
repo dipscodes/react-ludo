@@ -1,5 +1,5 @@
+import ColorCorridor from "./ColorCorridor";
 import HouseBox from "./HouseBox";
-import StepBox from "./StepBox";
 
 const Board = () => {
   return (
@@ -14,13 +14,7 @@ const Board = () => {
         >
           <HouseBox color="rgb(37, 99, 235)" />
         </div>
-        <div className="w-[120px] h-[240px] min-w-[120px] min-h-[240px] flex flex-row flex-wrap">
-          {Array(18)
-            .fill(true)
-            .map((item, index) => (
-              <StepBox key={index} />
-            ))}
-        </div>
+        <ColorCorridor color="red" />
         <div
           id="house-red"
           className="w-[240px] h-[240px] min-w-[240px] min-h-[240px]"
@@ -29,24 +23,12 @@ const Board = () => {
         </div>
       </div>
       <div className="w-[600px] h-[120px] min-w-[600px] min-h-[120px] flex flex-row flex-wrap">
-        <div className="w-[240px] h-[120px] min-w-[240px] min-h-[120px] flex flex-row flex-wrap">
-          {Array(18)
-            .fill(true)
-            .map((item, index) => (
-              <StepBox key={index} />
-            ))}
-        </div>
+        <ColorCorridor color="blue" />
         <div
           id="finish-box"
           className="w-[120px] h-[120px] min-w-[120px] min-h-[120px]"
         ></div>
-        <div className="w-[240px] h-[120px] min-w-[240px] min-h-[120px] flex flex-row flex-wrap">
-          {Array(18)
-            .fill(true)
-            .map((item, index) => (
-              <StepBox key={index} />
-            ))}
-        </div>
+        <ColorCorridor color="green" />
       </div>
       <div className="w-[600px] h-[240px] min-w-[600px] min-h-[240px] flex flex-row justify-normal">
         <div
@@ -55,13 +37,7 @@ const Board = () => {
         >
           <HouseBox color="rgb(234, 179, 8)" />
         </div>
-        <div className="w-[120px] h-[240px] min-w-[120px] min-h-[240px] flex flex-row flex-wrap">
-          {Array(18)
-            .fill(true)
-            .map((item, index) => (
-              <StepBox key={index} />
-            ))}
-        </div>
+        <ColorCorridor color="yellow" />
         <div
           id="house-green"
           className="w-[240px] h-[240px] min-w-[240px] min-h-[240px]"
