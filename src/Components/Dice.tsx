@@ -1,5 +1,5 @@
 const Dice = () => {
-  return <div>DIce</div>;
+  return <div>Dice</div>;
 };
 
 export default Dice;
