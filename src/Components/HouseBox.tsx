@@ -8,7 +8,7 @@ interface Props {
 const HouseBox = ({ color, numberOfPieces }: Props) => {
   return (
     <div
-      className="w-full h-full flex flex-row justify-center items-center"
+      className="w-[240px] h-[240px] min-w-[240px] min-h-[240px] flex flex-row justify-center items-center"
       style={{ backgroundColor: color }}
     >
       <div className="w-[160px] h-[160px] bg-white rounded-lg flex flex-row flex-wrap">
