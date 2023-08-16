@@ -11,8 +11,8 @@ const BlueCorridor = () => {
         .fill(true)
         .map((item, index) => {
           if ((index >= 7 && index <= 11) || index === 1)
-            return <StepBox color={color.blue} key={index} />;
-          else return <StepBox key={index} />;
+            return <StepBox color={color.blue} key={index} index={index} />;
+          else return <StepBox key={index} index={index} />;
         })}
     </div>
   );
