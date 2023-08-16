@@ -6,17 +6,15 @@ interface Props {
 const StepBox = ({ color, index }: Props) => {
   return (
     <div
-      className="w-[40px] h-[40px] border-2 border-solid border-black"
+      className="w-[40px] h-[40px] border-2 border-solid border-black flex flex-row justify-center items-center"
       style={{ backgroundColor: color }}
-    >
-      {index}
-    </div>
+    ></div>
   );
 };
 
 StepBox.defaultProps = {
   color: "white",
-  index: 0,
+  index: null,
 };
 
 export default StepBox;
