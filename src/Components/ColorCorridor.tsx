@@ -13,10 +13,10 @@ const ColorCorridor = ({ color }: Props) => {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const { colors, setColors } = useContext(ColorContext);
   let corridor: JSX.Element = <></>;
-  if (color === "green") corridor = <GreenCorridor color={colors[color]} />;
-  if (color === "yellow") corridor = <YellowCorridor color={colors[color]} />;
-  if (color === "blue") corridor = <BlueCorridor color={colors[color]} />;
-  if (color === "red") corridor = <RedCorridor color={colors[color]} />;
+  if (color === "0") corridor = <RedCorridor color={colors[color]} />;
+  if (color === "1") corridor = <GreenCorridor color={colors[color]} />;
+  if (color === "2") corridor = <YellowCorridor color={colors[color]} />;
+  if (color === "3") corridor = <BlueCorridor color={colors[color]} />;
   return corridor;
 };
 
