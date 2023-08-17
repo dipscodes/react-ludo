@@ -8,7 +8,9 @@ const StepBox = ({ color, index }: Props) => {
     <div
       className="w-[40px] h-[40px] border-2 border-solid border-black flex flex-row justify-center items-center"
       style={{ backgroundColor: color }}
-    ></div>
+    >
+      {index}
+    </div>
   );
 };
 

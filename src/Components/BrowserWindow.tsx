@@ -3,7 +3,7 @@ import { ColorContext } from "../context";
 import Display from "./Display";
 
 const BrowserWindow = () => {
-  const [color, setColor] = useState({
+  const [colors, setColors] = useState({
     red: "rgb(239, 68, 68)",
     green: "rgb(34, 197, 94)",
     blue: "rgb(37, 99, 235)",
@@ -12,10 +12,10 @@ const BrowserWindow = () => {
 
   const contextValue = useMemo(() => {
     return {
-      color,
-      setColor,
+      colors,
+      setColors,
     };
-  }, [color, setColor]);
+  }, [colors, setColors]);
 
   return (
     <ColorContext.Provider value={contextValue}>
