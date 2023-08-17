@@ -1,13 +1,13 @@
-import StepBox from "./StepBox";
+import CorridorStepBoxes from "./CorridorStepBoxes";
 
-const YellowCorridor = () => {
+interface Props {
+  color: string;
+}
+
+const YellowCorridor = ({ color }: Props) => {
   return (
-    <div className="w-[120px] h-[240px] min-w-[120px] min-h-[240px] flex flex-row flex-wrap">
-      {Array(18)
-        .fill(true)
-        .map((item, index) => (
-          <StepBox key={index} />
-        ))}
+    <div className="w-[120px] h-[240px] min-w-[120px] min-h-[240px] flex flex-col-reverse flex-wrap justify-end">
+      <CorridorStepBoxes color={color} />
     </div>
   );
 };
