@@ -1,5 +1,5 @@
 interface IBoard {
-  playerCount: number[];
+  playerList: number[];
   players: IPlayer[];
   gameJSON: object;
 }

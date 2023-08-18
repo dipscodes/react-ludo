@@ -1,5 +1,5 @@
 import { useMemo, useState } from "react";
-import { ColorContext, StageContext } from "../context";
+import { ColorContext, GameBoardContext } from "../context";
 import Display from "./Display";
 import Board from "../Classes/board";
 import Referee from "../Classes/referee";
@@ -14,9 +14,9 @@ const BrowserWindow = () => {
   });
 
   const referee = new Referee();
-  const board = new Board([0, 1, 2], referee, gameJSON);
+  const board = new Board([0, 2], referee, gameJSON);
 
-  console.log((board.gameJSON as any).player1.pieces[3].color); // proper type of base.json add proper interface
+  // console.log((board.gameJSON as any).player1.pieces[3].color); // proper type of base.json add proper interface
 
   const [gameBoard, setGameBoard] = useState(board);
 
@@ -36,11 +36,11 @@ const BrowserWindow = () => {
 
   return (
     <ColorContext.Provider value={colorContextValue}>
-      <StageContext.Provider value={boardContextValue}>
+      <GameBoardContext.Provider value={boardContextValue}>
         <div className="w-screen h-screen bg-slate-400 overflow-y-scroll">
           <Display />
         </div>
-      </StageContext.Provider>
+      </GameBoardContext.Provider>
     </ColorContext.Provider>
   );
 };
