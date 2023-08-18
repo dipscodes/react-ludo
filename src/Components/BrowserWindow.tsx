@@ -1,6 +1,9 @@
 import { useMemo, useState } from "react";
 import { ColorContext, StageContext } from "../context";
 import Display from "./Display";
+import Board from "../Classes/board";
+import Referee from "../Classes/referee";
+import gameJSON from "../Classes/base.json";
 
 const BrowserWindow = () => {
   const [colors, setColors] = useState({
@@ -10,36 +13,12 @@ const BrowserWindow = () => {
     3: "rgb(37, 99, 235)",
   });
 
-  const [stage, setStage] = useState({
-    0: {
-      die: -1,
-      0: -1,
-      1: -2,
-      2: -3,
-      3: -4,
-    },
-    1: {
-      die: -1,
-      0: -1,
-      1: -2,
-      2: -3,
-      3: -4,
-    },
-    2: {
-      die: -1,
-      0: -1,
-      1: -2,
-      2: -3,
-      3: -4,
-    },
-    3: {
-      die: -1,
-      0: -1,
-      1: -2,
-      2: -3,
-      3: -4,
-    },
-  });
+  const referee = new Referee();
+  const board = new Board([0, 1, 2], referee, gameJSON);
+
+  console.log((board.gameJSON as any).player1.pieces[3].color); // proper type of base.json add proper interface
+
+  const [gameBoard, setGameBoard] = useState(board);
 
   const colorContextValue = useMemo(() => {
     return {
@@ -48,16 +27,16 @@ const BrowserWindow = () => {
     };
   }, [colors, setColors]);
 
-  const stageContextValue = useMemo(() => {
+  const boardContextValue = useMemo(() => {
     return {
-      stage,
-      setStage,
+      gameBoard,
+      setGameBoard,
     };
-  }, [stage, setStage]);
+  }, [gameBoard, setGameBoard]);
 
   return (
     <ColorContext.Provider value={colorContextValue}>
-      <StageContext.Provider value={stageContextValue}>
+      <StageContext.Provider value={boardContextValue}>
         <div className="w-screen h-screen bg-slate-400 overflow-y-scroll">
           <Display />
         </div>

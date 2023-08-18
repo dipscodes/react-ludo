@@ -13,7 +13,10 @@ const DieSimulator = ({ className, id }: Props) => {
         .fill(true)
         .map((item, index) => {
           return (
-            <div className="w-[30px] h-[30px] min-w-[30px] min-h-[30px] border-2 border-solid border-black flex flex-row justify-center items-center">
+            <div
+              key={index}
+              className="w-[30px] h-[30px] min-w-[30px] min-h-[30px] border-2 border-solid border-black flex flex-row justify-center items-center"
+            >
               {index + 1}
             </div>
           );
