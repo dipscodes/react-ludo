@@ -1,18 +1,14 @@
-import { IPiece, IPlayer, IReferee } from "../Interfaces";
-import Piece from "./piece";
+import { IPlayer } from "../Interfaces";
+import PieceSet from "./pieceSet";
 
-class Player implements IPlayer {
+class Player extends PieceSet implements IPlayer {
   color = -1;
   pieceCount = 4;
-  pieces: IPiece[];
   die = -1;
 
-  constructor(color: number, referee: IReferee) {
+  constructor(color: number) {
+    super();
     this.color = color;
-    const length: number = this.pieceCount;
-    this.pieces = Array.from({ length }, (_, index) => 0 + index * 1).map(
-      (value, i) => new Piece(i, referee)
-    );
   }
 
   move(steps: number): void {}

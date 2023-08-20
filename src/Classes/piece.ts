@@ -1,10 +1,10 @@
-import { IPiece, IReferee } from "../Interfaces";
+import { IPiece } from "../Interfaces";
 
 class Piece implements IPiece {
   color: number;
   index = -1;
 
-  constructor(color: number, referee: IReferee) {
+  constructor(color: number) {
     this.color = color;
   }
 }

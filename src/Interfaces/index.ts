@@ -1,7 +1,7 @@
 interface IBoard {
   playerList: number[];
-  players: IPlayer[];
   gameJSON: object;
+  playerSet: IPlayerSet;
 }
 
 interface IPlayer {
@@ -22,4 +22,12 @@ interface IReferee {
   cut(piece1: IPiece, piece2: IPiece): void;
 }
 
-export type { IBoard, IPlayer, IPiece, IReferee };
+interface IPlayerSet {
+  players: IPlayer[];
+}
+
+interface IPieceSet {
+  pieces: IPiece[];
+}
+
+export type { IBoard, IPlayer, IPiece, IReferee, IPlayerSet, IPieceSet };
