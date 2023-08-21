@@ -1,18 +1,18 @@
-import { IPiece, IReferee } from "../Interfaces";
+import { IPiece, IPieceJSON } from "../Interfaces";
 
 class Piece implements IPiece {
   color: number;
-  referee: IReferee;
   index = -1;
   isOut = false;
   isSafe = true;
   inHouse = true;
   inPlay = true;
   inHomeRun = true;
+  pieceState: IPieceJSON;
 
-  constructor(color: number, referee: IReferee) {
+  constructor(color: number, pieceJSON: IPieceJSON) {
     this.color = color;
-    this.referee = referee;
+    this.pieceState = pieceJSON;
   }
 }
 

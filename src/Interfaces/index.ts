@@ -1,11 +1,19 @@
-interface IBoard extends IPlayerSet {
+interface IPlayerSet {
   playerList: number[];
-  gameJSON: object;
+  players: IPlayer[];
+  gameState: IPlayerJSON[];
+}
+interface IBoard extends IPlayerSet {
+  gameState: IPlayerJSON[];
+  referee: IReferee;
   play(): void;
   start(): void;
   save(): void;
   quit(): void;
   getPlayerList(): number[];
+  getReferee(): IReferee;
+  getGameState(): IPlayerJSON[];
+  move(playerNumber: number, pieceNumber: number, steps: number): void;
 }
 
 interface IPlayer extends IPieceSet {
@@ -19,12 +27,12 @@ interface IPlayer extends IPieceSet {
 interface IPiece {
   color: number;
   index: number;
-  referee: IReferee;
   isOut: boolean;
   inHouse: boolean;
   inPlay: boolean;
   isSafe: boolean;
   inHomeRun: boolean;
+  pieceState: IPieceJSON;
 }
 
 interface IPieceJSON {
@@ -50,15 +58,9 @@ interface IReferee {
   cut(piece1: IPiece, piece2: IPiece): void;
 }
 
-interface IPlayerSet {
-  playerList: number[];
-  players: IPlayer[];
-  referee: IReferee;
-}
-
 interface IPieceSet {
+  color: number;
   pieces: IPiece[];
-  referee: IReferee;
 }
 
 export type {

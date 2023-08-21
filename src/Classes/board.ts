@@ -1,15 +1,15 @@
-import { IBoard, IReferee } from "../Interfaces";
+import { IBoard, IPlayerJSON, IReferee } from "../Interfaces";
 import PlayerSet from "./playerSet";
 
 class Board extends PlayerSet implements IBoard {
-  playerList: number[];
-  gameJSON: object;
   referee: IReferee;
 
-  constructor(playerList: number[], gameJSON: object, referee: IReferee) {
-    super(playerList, referee);
-    this.playerList = playerList;
-    this.gameJSON = gameJSON;
+  constructor(
+    playerList: number[],
+    gameJSON: IPlayerJSON[],
+    referee: IReferee
+  ) {
+    super(playerList, gameJSON);
     this.referee = referee;
   }
 
@@ -17,9 +17,24 @@ class Board extends PlayerSet implements IBoard {
     return this.playerList;
   }
 
+  getReferee(): IReferee {
+    return this.referee;
+  }
+
+  getGameState(): IPlayerJSON[] {
+    return this.gameState;
+  }
+
+  move(playerNumber: number, pieceNumber: number, steps: number): void {
+    /**
+     * The referee updates the json and the pieces move the ui
+     */
+  }
+
   /**
    * According to the gameJSON play() start the board with correct piece placement and player/piece information
    */
+
   play(): void {}
   start(): void {}
   save(): void {}

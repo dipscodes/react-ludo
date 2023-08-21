@@ -1,16 +1,13 @@
-import { IPlayer, IReferee } from "../Interfaces";
+import { IPieceJSON, IPlayer } from "../Interfaces";
 import PieceSet from "./pieceSet";
 
 class Player extends PieceSet implements IPlayer {
-  color = -1;
   pieceCount = 4;
   dieFace = -1;
-  referee: IReferee;
 
-  constructor(color: number, referee: IReferee) {
-    super(referee);
-    this.color = color;
-    this.referee = referee;
+  // eslint-disable-next-line @typescript-eslint/no-useless-constructor
+  constructor(color: number, pieceSetJSON: IPieceJSON[]) {
+    super(color, pieceSetJSON);
   }
 
   move(steps: number): void {}

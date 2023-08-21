@@ -14,7 +14,7 @@ const BrowserWindow = () => {
     3: "rgb(37, 99, 235)",
   });
   const referee: IReferee = new Referee(gameJSON);
-  const board: IBoard = new Board([0, 1, 2], gameJSON, referee);
+  const board: IBoard = new Board([0, 1, 2, 3], gameJSON, referee);
   const [gameBoard, setGameBoard] = useState(board);
 
   const colorContextValue = useMemo(() => {
