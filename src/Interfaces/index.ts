@@ -1,9 +1,9 @@
-interface IBoard {
+interface IBoard extends IPlayerSet {
   playerList: number[];
   gameJSON: object;
 }
 
-interface IPlayer {
+interface IPlayer extends IPieceSet {
   color: number;
   pieceCount: number;
   pieces: IPiece[];
