@@ -3,7 +3,8 @@ import { ColorContext, GameBoardContext } from "../context";
 import Display from "./Display";
 import Board from "../Classes/board";
 import Referee from "../Classes/referee";
-import gameJSON from "../Classes/base.json";
+import gameJSON from "../GameJSON";
+import { IBoard, IReferee } from "../Interfaces";
 
 const BrowserWindow = () => {
   const [colors, setColors] = useState({
@@ -12,12 +13,8 @@ const BrowserWindow = () => {
     2: "rgb(234, 179, 8)",
     3: "rgb(37, 99, 235)",
   });
-
-  const referee = new Referee();
-  const board = new Board([0, 2], referee, gameJSON);
-
-  // console.log((board.gameJSON as any).player1.pieces[3].color); // proper type of base.json add proper interface
-
+  const referee: IReferee = new Referee(gameJSON);
+  const board: IBoard = new Board([0, 1, 2], gameJSON, referee);
   const [gameBoard, setGameBoard] = useState(board);
 
   const colorContextValue = useMemo(() => {
