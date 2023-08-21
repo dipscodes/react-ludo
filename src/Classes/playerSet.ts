@@ -1,7 +1,7 @@
-import { IPlayer } from "../Interfaces";
+import { IPlayer, IPlayerSet } from "../Interfaces";
 import Player from "./player";
 
-class PlayerSet {
+class PlayerSet implements IPlayerSet {
   playerList: number[];
   players: IPlayer[];
 

@@ -1,7 +1,6 @@
 interface IBoard {
   playerList: number[];
   gameJSON: object;
-  playerSet: IPlayerSet;
 }
 
 interface IPlayer {
@@ -23,6 +22,7 @@ interface IReferee {
 }
 
 interface IPlayerSet {
+  playerList: number[];
   players: IPlayer[];
 }
 
