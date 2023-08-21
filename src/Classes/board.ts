@@ -13,6 +13,10 @@ class Board extends PlayerSet implements IBoard {
     this.referee = referee;
   }
 
+  getPlayerList(): number[] {
+    return this.playerList;
+  }
+
   /**
    * According to the gameJSON play() start the board with correct piece placement and player/piece information
    */

@@ -1,8 +1,10 @@
-import { IPiece, IReferee } from "../Interfaces";
-import gameJSON from "./base.json";
+import { IPiece, IPlayerJSON, IReferee } from "../Interfaces";
 
 class Referee implements IReferee {
-  gameState = gameJSON;
+  gameState: IPlayerJSON[];
+  constructor(gameJSON: IPlayerJSON[]) {
+    this.gameState = gameJSON;
+  }
   cut(piece1: IPiece, piece2: IPiece): void {}
 }
 

@@ -4,7 +4,7 @@ import PieceSet from "./pieceSet";
 class Player extends PieceSet implements IPlayer {
   color = -1;
   pieceCount = 4;
-  die = -1;
+  dieFace = -1;
   referee: IReferee;
 
   constructor(color: number, referee: IReferee) {

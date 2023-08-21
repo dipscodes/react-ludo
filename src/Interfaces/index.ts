@@ -5,13 +5,14 @@ interface IBoard extends IPlayerSet {
   start(): void;
   save(): void;
   quit(): void;
+  getPlayerList(): number[];
 }
 
 interface IPlayer extends IPieceSet {
   color: number;
   pieceCount: number;
   pieces: IPiece[];
-  die: number;
+  dieFace: number;
   move(steps: number): void;
 }
 
@@ -19,10 +20,33 @@ interface IPiece {
   color: number;
   index: number;
   referee: IReferee;
+  isOut: boolean;
+  inHouse: boolean;
+  inPlay: boolean;
+  isSafe: boolean;
+  inHomeRun: boolean;
+}
+
+interface IPieceJSON {
+  color: number;
+  index: number;
+  isOut: boolean;
+  inHouse: boolean;
+  inPlay: boolean;
+  isSafe: boolean;
+  inHomeRun: boolean;
+}
+
+interface IPlayerJSON {
+  color: number;
+  pieceCount: number;
+  pieces: IPieceJSON[];
+  dieFace: number;
+  currentTurn: boolean;
 }
 
 interface IReferee {
-  gameState: object;
+  gameState: IPlayerJSON[];
   cut(piece1: IPiece, piece2: IPiece): void;
 }
 
@@ -37,4 +61,13 @@ interface IPieceSet {
   referee: IReferee;
 }
 
-export type { IBoard, IPlayer, IPiece, IReferee, IPlayerSet, IPieceSet };
+export type {
+  IBoard,
+  IPlayer,
+  IPiece,
+  IReferee,
+  IPlayerSet,
+  IPieceSet,
+  IPieceJSON,
+  IPlayerJSON,
+};
