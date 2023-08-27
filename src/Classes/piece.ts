@@ -14,6 +14,8 @@ class Piece implements IPiece {
     this.color = color;
     this.pieceState = pieceJSON;
   }
+
+  move() {}
 }
 
 export default Piece;

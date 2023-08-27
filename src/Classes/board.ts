@@ -29,6 +29,7 @@ class Board extends PlayerSet implements IBoard {
     /**
      * The referee updates the json and the pieces move the ui
      */
+    this.referee.move(playerNumber, pieceNumber, steps);
   }
 
   /**

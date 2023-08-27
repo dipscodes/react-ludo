@@ -17,6 +17,7 @@ interface IBoard extends IPlayerSet {
 }
 
 interface IPlayer extends IPieceSet {
+  irlPlayerName: string;
   color: number;
   pieceCount: number;
   pieces: IPiece[];
@@ -55,7 +56,7 @@ interface IPlayerJSON {
 
 interface IReferee {
   gameState: IPlayerJSON[];
-  cut(piece1: IPiece, piece2: IPiece): void;
+  move(playerNumber: number, pieceNumber: number, steps: number): void;
 }
 
 interface IPieceSet {
