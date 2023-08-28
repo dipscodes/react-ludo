@@ -6,11 +6,19 @@ class PlayerSet implements IPlayerSet {
   players: IPlayer[];
   gameState: IPlayerJSON[];
 
-  constructor(playerList: number[], gameJSON: IPlayerJSON[]) {
+  constructor(
+    playerList: number[],
+    gameJSON: IPlayerJSON[],
+    irlPlayerNameList: string[]
+  ) {
     this.playerList = playerList;
 
     this.players = this.playerList.map((color, index) => {
-      return new Player(color, gameJSON[index].pieces);
+      return new Player(
+        color,
+        gameJSON[index].pieces,
+        irlPlayerNameList[index]
+      );
     });
     this.gameState = gameJSON;
   }

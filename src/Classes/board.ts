@@ -7,9 +7,10 @@ class Board extends PlayerSet implements IBoard {
   constructor(
     playerList: number[],
     gameJSON: IPlayerJSON[],
+    irlPlayerNameList: string[],
     referee: IReferee
   ) {
-    super(playerList, gameJSON);
+    super(playerList, gameJSON, irlPlayerNameList);
     this.referee = referee;
   }
 
