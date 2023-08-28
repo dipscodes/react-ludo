@@ -17,7 +17,7 @@ const BrowserWindow = () => {
   const board: IBoard = new Board(
     [0, 1, 2, 3],
     gameJSON,
-    ["", "", "", ""],
+    ["Ichigo", "Aizen", "Urahara", "Ulquiorra"],
     referee
   );
   const [gameBoard, setGameBoard] = useState(board);

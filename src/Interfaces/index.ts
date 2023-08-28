@@ -5,11 +5,16 @@ interface IPlayerSet {
 }
 interface IBoard extends IPlayerSet {
   gameState: IPlayerJSON[];
+  turn: number;
   referee: IReferee;
   play(): void;
   start(): void;
   save(): void;
   quit(): void;
+  updateTurn(): void;
+  addTurnToDice(): void;
+  addTurnToPieces(): void;
+  giveTurnToPlayer(): void;
   getPlayerList(): number[];
   getReferee(): IReferee;
   getGameState(): IPlayerJSON[];
@@ -29,8 +34,8 @@ interface IPiece {
   color: number;
   index: number;
   isOut: boolean;
-  inHouse: boolean;
-  inPlay: boolean;
+  isInHouse: boolean;
+  isInPlay: boolean;
   isSafe: boolean;
   inHomeRun: boolean;
   pieceState: IPieceJSON;
@@ -40,8 +45,8 @@ interface IPieceJSON {
   color: number;
   index: number;
   isOut: boolean;
-  inHouse: boolean;
-  inPlay: boolean;
+  isInHouse: boolean;
+  isInPlay: boolean;
   isSafe: boolean;
   inHomeRun: boolean;
 }

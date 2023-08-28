@@ -3,6 +3,7 @@ import PlayerSet from "./playerSet";
 
 class Board extends PlayerSet implements IBoard {
   referee: IReferee;
+  turn: number;
 
   constructor(
     playerList: number[],
@@ -12,7 +13,44 @@ class Board extends PlayerSet implements IBoard {
   ) {
     super(playerList, gameJSON, irlPlayerNameList);
     this.referee = referee;
+    this.turn = playerList[0];
+    this.addTurnToDice();
   }
+
+  /**
+   * Updates player turn
+   */
+  updateTurn(): void {}
+
+  addTurnToDice(): void {
+    console.log(this.turn, this.players[this.turn].irlPlayerName);
+    const promise = new Promise((resolve) => {
+      const die = document.getElementById(
+        `${this.turn}-dice`
+      ) as HTMLDivElement;
+
+      if (die) {
+        die.addEventListener("click", () => {
+          resolve(
+            `${this.players[this.turn].irlPlayerName}'s die was clicked!`
+          );
+        });
+      } else {
+        console.log("die isn't renedered");
+        // setTimeout(() => {
+        //   this.addTurnToDice();
+        // }, 1000);
+      }
+    });
+
+    promise.then((result) => {
+      console.log(result);
+    });
+  }
+
+  addTurnToPieces(): void {}
+
+  giveTurnToPlayer(): void {}
 
   getPlayerList(): number[] {
     return this.playerList;

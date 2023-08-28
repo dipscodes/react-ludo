@@ -5,8 +5,8 @@ class Piece implements IPiece {
   index = -1;
   isOut = false;
   isSafe = true;
-  inHouse = true;
-  inPlay = true;
+  isInHouse = true;
+  isInPlay = true;
   inHomeRun = true;
   pieceState: IPieceJSON;
 
