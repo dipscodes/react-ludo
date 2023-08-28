@@ -5,6 +5,7 @@ class PlayerSet implements IPlayerSet {
   playerList: number[];
   players: IPlayer[];
   gameState: IPlayerJSON[];
+  playerCount: number;
 
   constructor(
     playerList: number[],
@@ -12,6 +13,7 @@ class PlayerSet implements IPlayerSet {
     irlPlayerNameList: string[]
   ) {
     this.playerList = playerList;
+    this.playerCount = playerList.length;
 
     this.players = this.playerList.map((color, index) => {
       return new Player(

@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { ColorContext, GameBoardContext } from "../context";
 import Display from "./Display";
 import Board from "../Classes/board";
@@ -35,6 +35,10 @@ const BrowserWindow = () => {
       setGameBoard,
     };
   }, [gameBoard, setGameBoard]);
+
+  useEffect(() => {
+    gameBoard.play();
+  });
 
   return (
     <ColorContext.Provider value={colorContextValue}>

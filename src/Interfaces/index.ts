@@ -7,12 +7,13 @@ interface IBoard extends IPlayerSet {
   gameState: IPlayerJSON[];
   turn: number;
   referee: IReferee;
+  playerCount: number;
   play(): void;
   start(): void;
   save(): void;
   quit(): void;
-  updateTurn(): void;
-  addTurnToDice(): void;
+  updateTurn(turn: number): void;
+  addTurnToDice(): Promise<number>;
   addTurnToPieces(): void;
   giveTurnToPlayer(): void;
   getPlayerList(): number[];

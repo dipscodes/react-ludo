@@ -14,38 +14,38 @@ class Board extends PlayerSet implements IBoard {
     super(playerList, gameJSON, irlPlayerNameList);
     this.referee = referee;
     this.turn = playerList[0];
-    this.addTurnToDice();
+    // this.addTurnToDice();
   }
 
   /**
    * Updates player turn
    */
-  updateTurn(): void {}
+  updateTurn(turn: number): void {
+    this.turn = turn;
+  }
 
-  addTurnToDice(): void {
-    console.log(this.turn, this.players[this.turn].irlPlayerName);
-    const promise = new Promise((resolve) => {
+  addTurnToDice(): Promise<number> {
+    // console.log(this.turn, this.players[this.turn].irlPlayerName);
+    const promise = new Promise<number>((resolve) => {
       const die = document.getElementById(
         `${this.turn}-dice`
       ) as HTMLDivElement;
 
       if (die) {
         die.addEventListener("click", () => {
-          resolve(
-            `${this.players[this.turn].irlPlayerName}'s die was clicked!`
-          );
+          resolve(parseInt(die.getAttribute("data-face") as string));
         });
       } else {
         console.log("die isn't renedered");
-        // setTimeout(() => {
-        //   this.addTurnToDice();
-        // }, 1000);
       }
     });
 
-    promise.then((result) => {
-      console.log(result);
-    });
+    return promise;
+
+    // promise.then((result) => {
+    //   console.log(result);
+    //   return 0;
+    // });
   }
 
   addTurnToPieces(): void {}
@@ -75,7 +75,13 @@ class Board extends PlayerSet implements IBoard {
    * According to the gameJSON play() start the board with correct piece placement and player/piece information
    */
 
-  play(): void {}
+  async play() {
+    while (true) {
+      const temp = await this.addTurnToDice();
+      this.updateTurn((this.turn + 1) % this.playerCount);
+      console.log(temp);
+    }
+  }
   start(): void {}
   save(): void {}
   quit(): void {}
