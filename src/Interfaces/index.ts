@@ -15,6 +15,7 @@ interface IBoard extends IPlayerSet {
   rollDice(): Promise<number>;
   addTurnToPieces(): void;
   giveTurnToPlayer(): void;
+  removeRollDicEventListener(): void;
 
   getPlayerList(): number[];
   getReferee(): IReferee;

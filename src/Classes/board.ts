@@ -1,10 +1,13 @@
 import { IBoard, IPlayerJSON, IReferee } from "../Interfaces";
 import PlayerSet from "./playerSet";
 
+type OnClickFunction = (this: HTMLDivElement, ev: MouseEvent) => any;
+
 class Board extends PlayerSet implements IBoard {
   referee: IReferee;
   private currentTurn: number;
   private onGoing: boolean;
+  private rollDiceEventListener: OnClickFunction | null;
 
   constructor(
     playerList: number[],
@@ -16,6 +19,8 @@ class Board extends PlayerSet implements IBoard {
     this.referee = referee;
     this.currentTurn = 0;
     this.onGoing = true;
+
+    this.rollDiceEventListener = null;
   }
 
   get getCurrentTurn(): number {
@@ -57,14 +62,29 @@ class Board extends PlayerSet implements IBoard {
         " was promised."
       );
 
+      const onClickCallBack = () => {
+        resolve(parseInt(dice.getAttribute("data-face") as string));
+        dice.removeEventListener("click", onClickCallBack);
+      };
+
       if (dice) {
-        dice.addEventListener("click", () => {
-          resolve(parseInt(dice.getAttribute("data-face") as string));
-        });
+        dice.addEventListener("click", onClickCallBack);
       } else {
         console.log("die isn't renedered");
       }
     });
+  }
+
+  removeRollDicEventListener(): void {
+    const dice = document.getElementById(
+      `${this.playerList[this.getCurrentTurn]}-dice`
+    ) as HTMLDivElement;
+
+    if (dice && this.rollDiceEventListener) {
+      dice.removeEventListener("click", this.rollDiceEventListener);
+    } else {
+      console.log("die isn't renedered");
+    }
   }
 
   addTurnToPieces(): void {}
@@ -77,8 +97,7 @@ class Board extends PlayerSet implements IBoard {
 
   async play() {
     while (this.onGoing) {
-      const temp = await this.rollDice(); // code should and have to freeze here
-      this.passTurn(true);
+      const temp = await this.rollDice();
       console.log(temp);
     }
   }
