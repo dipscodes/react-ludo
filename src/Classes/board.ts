@@ -1,4 +1,4 @@
-import { IBoard, IPlayerJSON, IReferee } from "../Interfaces";
+import { IBoard, IReferee, gameState } from "../Interfaces";
 import PlayerSet from "./playerSet";
 
 type OnRollCallBack = (this: HTMLDivElement, ev: MouseEvent) => any;
@@ -11,10 +11,7 @@ class Board extends PlayerSet implements IBoard {
 
   constructor(
     playerList: number[],
-    gameJSON: { players: IPlayerJSON[] } & {
-      turn: number | null;
-      roll: number | null;
-    },
+    gameJSON: gameState,
     irlPlayerNameList: string[],
     referee: IReferee
   ) {
@@ -45,10 +42,7 @@ class Board extends PlayerSet implements IBoard {
     return this.referee;
   }
 
-  getGameState(): { players: IPlayerJSON[] } & {
-    turn: number | null;
-    roll: number | null;
-  } {
+  getGameState(): gameState {
     return this.gameState;
   }
 

@@ -86,6 +86,11 @@ interface IPieceSet {
   pieces: IPiece[];
 }
 
+type gameState = { players: IPlayerJSON[] } & {
+  turn: number | null;
+  roll: number | null;
+};
+
 export type {
   IBoard,
   IPlayer,
@@ -95,4 +100,5 @@ export type {
   IPieceSet,
   IPieceJSON,
   IPlayerJSON,
+  gameState,
 };
