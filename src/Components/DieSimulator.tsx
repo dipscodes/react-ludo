@@ -12,7 +12,7 @@ const DieSimulator = ({ className, id, player }: Props) => {
   return (
     <div
       id={id}
-      className={`w-[240px] h-[240px] min-w-[240px] min-h-[240px] flex flex-row flex-wrap absolute ${className}`}
+      className={`w-[240px] h-[240px] min-w-[240px] min-h-[240px] flex flex-row flex-wrap absolute ${className} text-slate-700`}
     >
       {Array(64)
         .fill(true)

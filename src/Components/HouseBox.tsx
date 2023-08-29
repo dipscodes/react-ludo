@@ -13,9 +13,9 @@ const HouseBox = ({ player, numberOfPieces }: Props) => {
   return (
     <div
       className="w-[240px] h-[240px] min-w-[240px] min-h-[240px] flex flex-row justify-center items-center"
-      style={{ backgroundColor: colors[player] }}
+      style={{ backgroundColor: "rgb(51 65 85 / 1" }}
     >
-      <div className="w-[160px] h-[160px] bg-white rounded-lg flex flex-row flex-wrap">
+      <div className="w-[160px] h-[160px] bg-slate-700 rounded-lg flex flex-row flex-wrap border-2 border-solid border-black">
         <PieceBed color={colors[player]} player={player} />
         <PieceBed color={colors[player]} player={player} />
         <PieceBed color={colors[player]} player={player} />

@@ -22,7 +22,7 @@ const StepBox = ({ color, index, absoluteIndex }: Props) => {
 };
 
 StepBox.defaultProps = {
-  color: "white",
+  color: "inherit",
   index: null,
   absoluteIndex: 0,
 };

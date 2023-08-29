@@ -6,7 +6,7 @@ const Board = () => {
   return (
     <div
       id="ludo-board"
-      className="w-[600px] h-[600px] min-h-[600px] min-w-[600px] flex flex-col"
+      className="w-[600px] h-[600px] min-h-[600px] min-w-[600px] flex flex-col bg-slate-700"
     >
       <div className="w-[600px] h-[240px] min-w-[600px] min-h-[240px] flex flex-row justify-normal">
         <HouseBox player={3} />

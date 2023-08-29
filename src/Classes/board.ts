@@ -1,13 +1,13 @@
 import { IBoard, IPlayerJSON, IReferee } from "../Interfaces";
 import PlayerSet from "./playerSet";
 
-type OnClickFunction = (this: HTMLDivElement, ev: MouseEvent) => any;
+type OnRollCallBack = (this: HTMLDivElement, ev: MouseEvent) => any;
 
 class Board extends PlayerSet implements IBoard {
   referee: IReferee;
   private currentTurn: number;
   private onGoing: boolean;
-  private rollDiceEventListener: OnClickFunction | null;
+  private rollDiceEventListener: OnRollCallBack | null;
 
   constructor(
     playerList: number[],
@@ -62,13 +62,13 @@ class Board extends PlayerSet implements IBoard {
         " was promised."
       );
 
-      const onClickCallBack = () => {
+      const onRollCallBack: OnRollCallBack = () => {
         resolve(parseInt(dice.getAttribute("data-face") as string));
-        dice.removeEventListener("click", onClickCallBack);
+        dice.removeEventListener("click", onRollCallBack);
       };
 
       if (dice) {
-        dice.addEventListener("click", onClickCallBack);
+        dice.addEventListener("click", onRollCallBack);
       } else {
         console.log("die isn't renedered");
       }
@@ -98,6 +98,9 @@ class Board extends PlayerSet implements IBoard {
   async play() {
     while (this.onGoing) {
       const temp = await this.rollDice();
+      // how the event listeners get attached?
+      // backend changes
+      // ui changes
       this.passTurn(true);
       console.log(temp);
     }

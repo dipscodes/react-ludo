@@ -43,7 +43,7 @@ const BrowserWindow = () => {
   return (
     <ColorContext.Provider value={colorContextValue}>
       <GameBoardContext.Provider value={boardContextValue}>
-        <div className="w-screen h-screen bg-slate-400 overflow-y-scroll">
+        <div className="w-screen h-screen bg-slate-800 overflow-y-scroll">
           <Display />
         </div>
       </GameBoardContext.Provider>
