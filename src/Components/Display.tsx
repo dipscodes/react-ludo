@@ -17,16 +17,16 @@ const Display = () => {
           className="top-[95%] right-[23%] bg-green-500 absolute cursor-pointer"
         />
       </div>
-      <div id="3-dice" data-face={0}>
-        <FaDice
-          size={30}
-          className="top-[10%] right-[70%] bg-blue-500 absolute cursor-pointer"
-        />
-      </div>
       <div id="2-dice" data-face={0}>
         <FaDice
           size={30}
           className="top-[95%] right-[70%] bg-yellow-500 absolute cursor-pointer"
+        />
+      </div>
+      <div id="3-dice" data-face={0}>
+        <FaDice
+          size={30}
+          className="top-[10%] right-[70%] bg-blue-500 absolute cursor-pointer"
         />
       </div>
       <DieSimulator
