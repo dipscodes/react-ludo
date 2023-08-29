@@ -4,12 +4,12 @@ import Player from "./player";
 class PlayerSet implements IPlayerSet {
   playerList: number[];
   players: IPlayer[];
-  gameState: IPlayerJSON[];
+  gameState: { players: IPlayerJSON[] } & { turn: number };
   playerCount: number;
 
   constructor(
     playerList: number[],
-    gameJSON: IPlayerJSON[],
+    gameJSON: { players: IPlayerJSON[] } & { turn: number },
     irlPlayerNameList: string[]
   ) {
     this.playerList = playerList;
@@ -18,7 +18,7 @@ class PlayerSet implements IPlayerSet {
     this.players = this.playerList.map((color, index) => {
       return new Player(
         color,
-        gameJSON[index].pieces,
+        gameJSON.players[index].pieces,
         irlPlayerNameList[index]
       );
     });

@@ -4,8 +4,8 @@ import { IPlayerJSON, IReferee } from "../Interfaces";
  * Backend change
  */
 class Referee implements IReferee {
-  gameState: IPlayerJSON[];
-  constructor(gameJSON: IPlayerJSON[]) {
+  gameState: { players: IPlayerJSON[] } & { turn: number };
+  constructor(gameJSON: { players: IPlayerJSON[] } & { turn: number }) {
     this.gameState = gameJSON;
   }
   move(playerNumber: number, pieceNumber: number, steps: number) {}

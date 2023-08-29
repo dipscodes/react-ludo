@@ -1,10 +1,10 @@
 interface IPlayerSet {
   playerList: number[];
   players: IPlayer[];
-  gameState: IPlayerJSON[];
+  gameState: { players: IPlayerJSON[] } & { turn: number };
 }
 interface IBoard extends IPlayerSet {
-  gameState: IPlayerJSON[];
+  gameState: { players: IPlayerJSON[] } & { turn: number };
   referee: IReferee;
   playerCount: number;
   play(): void;
@@ -19,7 +19,7 @@ interface IBoard extends IPlayerSet {
 
   getPlayerList(): number[];
   getReferee(): IReferee;
-  getGameState(): IPlayerJSON[];
+  getGameState(): { players: IPlayerJSON[] } & { turn: number };
   get getCurrentTurn(): number;
   set setCurrentTurn(currentTurn: number);
   get getOnGoing(): boolean;
@@ -65,7 +65,7 @@ interface IPlayerJSON {
 }
 
 interface IReferee {
-  gameState: IPlayerJSON[];
+  gameState: { players: IPlayerJSON[] } & { turn: number };
   move(playerNumber: number, pieceNumber: number, steps: number): void;
 }
 
