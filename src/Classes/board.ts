@@ -98,6 +98,7 @@ class Board extends PlayerSet implements IBoard {
   async play() {
     while (this.onGoing) {
       const temp = await this.rollDice();
+      this.passTurn(true);
       console.log(temp);
     }
   }
