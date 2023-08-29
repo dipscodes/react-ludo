@@ -3,7 +3,7 @@ import PlayerSet from "./playerSet";
 
 class Board extends PlayerSet implements IBoard {
   referee: IReferee;
-  turn: number;
+  currentTurn: number;
 
   constructor(
     playerList: number[],
@@ -13,22 +13,20 @@ class Board extends PlayerSet implements IBoard {
   ) {
     super(playerList, gameJSON, irlPlayerNameList);
     this.referee = referee;
-    this.turn = playerList[0];
-    // this.addTurnToDice();
+    this.currentTurn = playerList[0];
   }
 
   /**
    * Updates player turn
    */
   updateTurn(turn: number): void {
-    this.turn = turn;
+    this.currentTurn = turn;
   }
 
   addTurnToDice(): Promise<number> {
-    // console.log(this.turn, this.players[this.turn].irlPlayerName);
     const promise = new Promise<number>((resolve) => {
       const die = document.getElementById(
-        `${this.turn}-dice`
+        `${this.currentTurn}-dice`
       ) as HTMLDivElement;
 
       if (die) {
@@ -41,11 +39,6 @@ class Board extends PlayerSet implements IBoard {
     });
 
     return promise;
-
-    // promise.then((result) => {
-    //   console.log(result);
-    //   return 0;
-    // });
   }
 
   addTurnToPieces(): void {}
@@ -74,11 +67,10 @@ class Board extends PlayerSet implements IBoard {
   /**
    * According to the gameJSON play() start the board with correct piece placement and player/piece information
    */
-
   async play() {
     while (true) {
       const temp = await this.addTurnToDice();
-      this.updateTurn((this.turn + 1) % this.playerCount);
+      this.updateTurn((this.currentTurn + 1) % this.playerCount);
       console.log(temp);
     }
   }

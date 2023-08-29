@@ -5,7 +5,7 @@ interface IPlayerSet {
 }
 interface IBoard extends IPlayerSet {
   gameState: IPlayerJSON[];
-  turn: number;
+  currentTurn: number;
   referee: IReferee;
   playerCount: number;
   play(): void;
