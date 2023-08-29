@@ -1,10 +1,16 @@
 interface IPlayerSet {
   playerList: number[];
   players: IPlayer[];
-  gameState: { players: IPlayerJSON[] } & { turn: number };
+  gameState: { players: IPlayerJSON[] } & {
+    turn: number | null;
+    roll: number | null;
+  };
 }
 interface IBoard extends IPlayerSet {
-  gameState: { players: IPlayerJSON[] } & { turn: number };
+  gameState: { players: IPlayerJSON[] } & {
+    turn: number | null;
+    roll: number | null;
+  };
   referee: IReferee;
   playerCount: number;
   play(): void;
@@ -19,7 +25,10 @@ interface IBoard extends IPlayerSet {
 
   getPlayerList(): number[];
   getReferee(): IReferee;
-  getGameState(): { players: IPlayerJSON[] } & { turn: number };
+  getGameState(): { players: IPlayerJSON[] } & {
+    turn: number | null;
+    roll: number | null;
+  };
   get getCurrentTurn(): number;
   set setCurrentTurn(currentTurn: number);
   get getOnGoing(): boolean;
@@ -65,7 +74,10 @@ interface IPlayerJSON {
 }
 
 interface IReferee {
-  gameState: { players: IPlayerJSON[] } & { turn: number };
+  gameState: { players: IPlayerJSON[] } & {
+    turn: number | null;
+    roll: number | null;
+  };
   move(playerNumber: number, pieceNumber: number, steps: number): void;
 }
 

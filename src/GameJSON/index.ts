@@ -1,7 +1,11 @@
 import { IPlayerJSON } from "../Interfaces";
 
-const gameJSON: { players: IPlayerJSON[] } & { turn: number } = {
+const gameJSON: { players: IPlayerJSON[] } & {
+  turn: number | null;
+  roll: number | null;
+} = {
   turn: 0,
+  roll: null,
   players: [
     {
       color: 0,

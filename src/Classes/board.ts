@@ -11,7 +11,10 @@ class Board extends PlayerSet implements IBoard {
 
   constructor(
     playerList: number[],
-    gameJSON: { players: IPlayerJSON[] } & { turn: number },
+    gameJSON: { players: IPlayerJSON[] } & {
+      turn: number | null;
+      roll: number | null;
+    },
     irlPlayerNameList: string[],
     referee: IReferee
   ) {
@@ -42,7 +45,10 @@ class Board extends PlayerSet implements IBoard {
     return this.referee;
   }
 
-  getGameState(): { players: IPlayerJSON[] } & { turn: number } {
+  getGameState(): { players: IPlayerJSON[] } & {
+    turn: number | null;
+    roll: number | null;
+  } {
     return this.gameState;
   }
 

@@ -4,12 +4,18 @@ import Player from "./player";
 class PlayerSet implements IPlayerSet {
   playerList: number[];
   players: IPlayer[];
-  gameState: { players: IPlayerJSON[] } & { turn: number };
+  gameState: { players: IPlayerJSON[] } & {
+    turn: number | null;
+    roll: number | null;
+  };
   playerCount: number;
 
   constructor(
     playerList: number[],
-    gameJSON: { players: IPlayerJSON[] } & { turn: number },
+    gameJSON: { players: IPlayerJSON[] } & {
+      turn: number | null;
+      roll: number | null;
+    },
     irlPlayerNameList: string[]
   ) {
     this.playerList = playerList;
