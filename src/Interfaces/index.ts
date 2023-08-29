@@ -5,20 +5,23 @@ interface IPlayerSet {
 }
 interface IBoard extends IPlayerSet {
   gameState: IPlayerJSON[];
-  currentTurn: number;
   referee: IReferee;
   playerCount: number;
   play(): void;
   start(): void;
   save(): void;
   quit(): void;
-  updateTurn(turn: number): void;
-  addTurnToDice(): Promise<number>;
+  passTurn(pass: boolean): void;
+  rollDice(): Promise<number>;
   addTurnToPieces(): void;
   giveTurnToPlayer(): void;
+
   getPlayerList(): number[];
   getReferee(): IReferee;
   getGameState(): IPlayerJSON[];
+  get getCurrentTurn(): number;
+  set setCurrentTurn(currentTurn: number);
+  get getOnGoing(): boolean;
   move(playerNumber: number, pieceNumber: number, steps: number): void;
 }
 
