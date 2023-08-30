@@ -97,12 +97,20 @@ class Board extends PlayerSet implements IBoard {
 
   async play() {
     while (this.onGoing) {
-      const temp = await this.rollDice();
-      // how the event listeners get attached?
-      // backend changes
-      // ui changes
+      const roll = await this.rollDice();
+      /**
+       * referee.updateRoll(roll)
+       * referee.update() // based on turn and roll update necessary objects
+       * referee.getCurrentPlay() // which pieces to attach event
+       * method to attach events and feedback in ui
+       * await click on pieces
+       * on click get results and change in ui
+       * referee.update() // based on result update necessary objects and return pass or keep
+       * this.passTurn(pass/keep) // based on pass or keep
+       * referee.updateTurn(this.currentTurn) // update current turn
+       */
       this.passTurn(true);
-      console.log(temp);
+      console.log(roll);
     }
   }
   start(): void {}
